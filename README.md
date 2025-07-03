@@ -11,6 +11,7 @@ AI大模型页面展示（接入DeepSeek，可以问任何问题）：
 
 作品集页面展示（可以随时记录自己的作业练习，所有作业均以部署至GitHub点击链接即可查看）：
 
+<img width="1169" alt="截屏2025-07-01 14 48 53" src="https://github.com/user-attachments/assets/0c6eb3fc-db08-45fc-b73e-557f0ffb4f10" />
 
 ## 功能特性
 
