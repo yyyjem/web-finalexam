@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 语法</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7bad6;
+        }
+        h1 {
+            color: #80bce4;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        h1:hover {
+            color: #f67a6c;
+            transform: scale(1.05);
+        }
+        h1.highlight {
+            color: #b2fab9;
+            transform: rotate(5deg);
+        }
+        #demo {
+            background-color: #ecf0f1;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            border: 2px solid #3498db;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 100px;
+        }
+        #demo:hover {
+            background-color: #d4e6f1;
+            border-color: #e74c3c;
+        }
+        #demo.clicked {
+            background-color: #f1c40f !important;
+        }
+        .car-info {
+            background-color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <h1 onclick="handleH1Click()">JavaScript 语法</h1>
+    <div id="demo">div content</div>
+    <div id="car-controls" class="car-info">
+        <h2>汽车控制</h2>
+        <button onclick="handleCarActions('start')">启动汽车</button>
+        <button onclick="handleCarActions('stop')">停止汽车</button>
+        <button onclick="handleCarActions('charge')">充电</button>
+        <div id="car-output"></div>
+    </div>
+
+    <script>
+        // 类和对象
+        class Car {
+            constructor(brand, model, year) {
+                this.brand = brand;
+                this.model = model;
+                this.year = year;
+            }
+            start() {
+                return \`汽车 \${this.brand} \${this.model} 启动了\`;
+            }
+            stop() {
+                return \`汽车 \${this.brand} \${this.model} 停止了\`;
+            }
+        }
+
+        class ElectricCar extends Car {
+            constructor(brand, model, year, range) {
+                super(brand, model, year);
+                this.range = range;
+            }
+            charge() {
+                return \`电动汽车 \${this.brand} \${this.model} 正在充电\`;
+            }
+        }
+
+        const myCar = new Car('Mi', 'Yu7', 2025);
+        const myElectricCar = new ElectricCar('Tesla', 'Model Y', 2025, 300);
+
+        // 处理汽车操作
+        function handleCarActions(action) {
+            const outputElement = document.getElementById('car-output');
+            let message = '';
+            
+            if (action === 'charge') {
+                message = myElectricCar[action]();
+            } else {
+                // 为普通汽车和电动汽车都显示操作
+                message += myCar[action]() + '<br>';
+                message += myElectricCar[action]() + '<br>';
+            }
+            
+            outputElement.innerHTML += \`<p>\${message}</p>\`;
+        }
+
+        // 回调函数练习，添加动画效果
+        const demoElement = document.getElementById('demo');
+        
+        setTimeout(() => {
+            demoElement.style.animation = 'pulse 1s infinite';
+        }, 2000);
+
+        // 处理标题点击事件
+        function handleH1Click() {
+            alert('我被点击了！');
+            const h1 = document.querySelector('h1');
+            h1.classList.toggle('highlight');
+        }
+
+        // DOM 操作
+        const myDom = document.getElementById('demo');
+        myDom.innerHTML = '这是从脚本动态更改的内容，点击我查看效果！';
+        myDom.onclick = function () {
+            alert('我也被点击了！');
+            this.classList.toggle('clicked');
+        };
+    </script>
+</body>
+</html>

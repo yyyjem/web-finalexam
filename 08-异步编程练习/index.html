@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 异步编程练习2</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: hsl(54, 80%, 73%);
+        }
+        h1 {
+            color: #afd4ec;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #d09dde;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #eda1ed;
+        }
+        tr:nth-child(even) {
+            background-color: #c3f0bf;
+        }
+        .error {
+            color: #e74c3c;
+            padding: 10px;
+            background-color: #f7b7b1;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript 异步编程练习</h1>
+    <div id="demo"></div>
+    <script>
+        // 从 GitHub API 获取提交日期
+        async function getAllCommitDates(owner, repo) {
+            // 注意：在 GitHub Pages 部署时，可能会遇到跨域问题，可使用代理解决
+            // 示例代理格式: https://cors-anywhere.herokuapp.com/https://api.github.com/repos/${owner}/${repo}/commits
+            const url = `https://api.github.com/repos/${owner}/${repo}/commits`;
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('网络响应失败，状态码: ' + response.status);
+                }
+                const commits = await response.json();
+                return commits.map(commit => commit.commit.author.date);
+            } catch (error) {
+                console.error('获取提交日期失败:', error);
+                throw error;
+            }
+        }
+
+        // 显示提交日期表格
+        function showCommitDatesTable(dates) {
+            let html = '<table border="1" cellpadding="5"><tr><th>序号</th><th>提交日期</th></tr>';
+            dates.forEach((date, idx) => {
+                html += `<tr><td>${idx + 1}</td><td>${date}</td></tr>`;
+            });
+            html += '</table>';
+            document.getElementById('demo').innerHTML = html;
+        }
+
+        // 显示错误信息
+        function showError(message) {
+            document.getElementById('demo').innerHTML = `<div class="error">${message}</div>`;
+        }
+
+        // 主函数
+        async function main() {
+            const owner = 'yangjh-xbmu';
+            const repo = 'Web-develop';
+            try {
+                const dates = await getAllCommitDates(owner, repo);
+                showCommitDatesTable(dates);
+            } catch (error) {
+                showError('获取提交日期失败: ' + error.message);
+            }
+        }
+
+        // 执行主函数
+        main();
+    </script>
+</body>
+</html>

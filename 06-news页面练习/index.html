@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 核心语法学习一</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .code-block {
+            background-color: #abe3ef;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+    </style>
+    <script>
+        // 变量声明与数据类型示例
+        const demonstrateVariables = () => {
+            const a = 100;
+            // 移除硬编码的 API 密钥
+            // const apiKey = 'SECRET_KEY'; // 实际开发中不要硬编码密钥
+
+            console.log('变量 a 的值：', a);
+            // console.log('API 密钥：', apiKey);
+            console.log('变量类型：', typeof a, typeof '示例字符串', typeof true);
+            
+            const b = '1';
+            console.log('字符串拼接结果：', a + b);
+            console.log('数值相加结果：', a + Number(b));
+            
+            const c = '100';
+            console.log('a 和 c 的类型：', typeof a, typeof c);
+            console.log('宽松相等比较：', a == c);
+            console.log('严格相等比较：', a === c);
+        };
+
+        // 分支语句示例
+        const demonstrateConditionals = () => {
+            const currentTime = '12:20';
+            if (currentTime === '12:20') {
+                console.log('冲啊！');
+            } else {
+                console.log('假装学习……');
+            }
+        };
+
+        // 循环语句示例
+        const demonstrateLoops = () => {
+            // for 循环
+            console.log('for 循环输出：');
+            for (let i = 1; i <= 10; i++) {
+                console.log(i);
+            }
+
+            // while 循环
+            let hug = 60;
+            console.log('while 循环输出：');
+            while (hug > 0) {
+                console.log('继续干饭……');
+                hug -= 10;
+            }
+        };
+
+        // 函数示例
+        const demonstrateFunctions = () => {
+            const intro = () => {
+                console.log('你好，我是一个脚本！');
+            };
+            intro();
+
+            const intro2 = (content) => {
+                console.log('以下是我介绍的内容：', content);
+                return typeof content;
+            };
+            console.log('intro2 返回值类型：', intro2('这是传入的参数'));
+
+            const intro3 = (content1, content2) => {
+                console.log('以下是我介绍的内容：', content1 + content2);
+            };
+            intro3('参数1', '参数2');
+
+            const intro4 = (content) => {
+                console.log('传入内容：', content);
+                return content + '这是返回值';
+            };
+            const result = intro4('带返回值的函数');
+            console.log('函数返回结果：', result);
+        };
+
+        // 页面加载完成后执行示例函数
+        window.addEventListener('DOMContentLoaded', () => {
+            demonstrateVariables();
+            demonstrateConditionals();
+            demonstrateLoops();
+            demonstrateFunctions();
+        });
+    </script>
+</head>
+<body>
+    <h1>JavaScript 核心语法学习一</h1>
+    
+    <h2>变量与数据类型</h2>
+    <p>在 JavaScript 中，我们可以使用 <code>let</code>、<code>const</code> 声明变量。<code>const</code> 用于声明常量，一旦赋值就不能修改；<code>let</code> 用于声明可变变量。</p>
+    <div class="code-block">
+        <code>const a = 100; // 数值类型<br>
+        const apiKey = 'SECRET_KEY'; // 字符串类型</code>
+    </div>
+    
+    <h2>分支语句</h2>
+    <p><code>if...else</code> 语句用于根据条件执行不同的代码块。</p>
+    <div class="code-block">
+        <code>const currentTime = '12:20';<br>
+        if (currentTime === '12:20') {<br>
+            console.log('冲啊！');<br>
+        } else {<br>
+            console.log('假装学习……');<br>
+        }</code>
+    </div>
+    
+    <h2>循环语句</h2>
+    <p>JavaScript 提供了多种循环语句，如 <code>for</code> 和 <code>while</code> 循环，用于重复执行代码块。</p>
+    <div class="code-block">
+        <code>// for 循环<br>
+        for (let i = 1; i &lt;= 10; i++) {<br>
+            console.log(i);<br>
+        }<br><br>
+        // while 循环<br>
+        let hug = 60;<br>
+        while (hug &gt; 0) {<br>
+            console.log('继续干饭……');<br>
+            hug -= 10;<br>
+        }</code>
+    </div>
+    
+    <h2>函数</h2>
+    <p>函数是 JavaScript 中的基本组成部分，用于封装可复用的代码块。</p>
+    <div class="code-block">
+        <code>const intro = () => {<br>
+            console.log('你好，我是一个脚本！');<br>
+        };<br>
+        intro();</code>
+    </div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 添加 SEO 相关元标签 -->
+    <meta name="description" content="JavaScript 语法练习页面，包含类、对象、回调函数和 DOM 操作示例">
+    <meta name="keywords" content="JavaScript, 类, 对象, 回调函数, DOM 操作">
+    <title>JavaScript 语法练习2</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            /* 添加移动端适配样式 */
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #333;
+            transition: color 0.3s;
+        }
+        .highlight {
+            color: #ff9f05 !important;
+        }
+        .paragraph {
+            padding: 10px;
+            border: 1px solid #8c9f82;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .paragraph:hover {
+            background-color: #9ed7ab;
+        }
+        /* 添加响应式样式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="demo" onclick="handleH1Click()">这是一个标题的原始内容</h1>
+    <div>
+        <p id="anotherp" class="paragraph">这是一个段落</p>
+    </div>
+
+    <script>
+        // 类和对象
+        // 定义一个类
+        class Student {
+            constructor(name, age, school, grade) {
+                this.name = name;
+                this.age = age;
+                this.school = school;
+                this.grade = grade;
+            }
+            // 方法
+            learn(subject = "语文") {
+                console.log(`${this.name}正在学习${subject}，真棒！`);
+            }
+            exam() {
+                return `${this.name} 正在考试`;
+            }
+        }
+
+        // 创建对象
+        const xiaoming = new Student("小明", 7, "实验小学", 1);
+        xiaoming.learn("英语");
+        console.log(xiaoming.exam());
+
+        class Undergraduate extends Student {
+            constructor(name, age, school, grade, major, experience) {
+                super(name, age, school, grade);
+                this.major = major;
+                this.experience = experience;
+            }
+
+            intern(corp) {
+                console.log(`${this.name}在${corp}实习，获得经验值1000`);
+                console.log(super.exam());
+                this.experience += 1000;
+            }
+        }
+
+        const xiaoming2 = new Undergraduate("小明", 17, "科技大学", 1, "新闻学", 0);
+        xiaoming2.intern("腾讯");
+        console.log(`当前经验值: ${xiaoming2.experience}`);
+
+        // 回调函数，函数作为参数传递给另一个函数
+        console.log("111111");
+        setTimeout(() => {
+            console.log("222222");
+        }, 1000);
+        console.log("333333");
+
+        // DOM 操作函数
+        function handleDOMOperations() {
+            // 添加空值检查，增强代码健壮性
+            const myh1 = document.getElementById("demo");
+            if (myh1) {
+                console.log(myh1);
+                // 改变元素的内容
+                myh1.innerHTML = "这是来自脚本的动态内容";
+                // 改变元素的样式
+                myh1.style.color = "#888";
+            }
+
+            const myp = document.getElementById("anotherp");
+            if (myp) {
+                myp.onclick = function () {
+                    alert("你好啊！");
+                    myp.classList.toggle("highlight");
+                };
+            }
+        }
+
+        // 页面加载完成后执行
+        window.onload = function () {
+            try {
+                alert("页面加载完成");
+                handleDOMOperations();
+            } catch (error) {
+                console.error('页面加载时出错:', error);
+            }
+        };
+
+        // 点击标题的处理函数
+        function handleH1Click() {
+            try {
+                alert('你点我干啥！');
+                const h1 = document.getElementById('demo');
+                if (h1) {
+                    h1.classList.toggle('highlight');
+                }
+            } catch (error) {
+                console.error('点击标题时出错:', error);
+            }
+        }
+    </script>
+</body>
+</html>
