@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻学与Java技术结合</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e74c3c;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui;
+            line-height: 1.6;
+            margin: 0;
+            background: #f8f9fa;
+        }
+
+        .hero {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .code-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        pre[class*="language-"] {
+            margin: 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>新闻学与技术融合</h1>
+        <p>媒体专业人员的现代Web开发技术</p>
+    </header>
+
+    <section class="code-section">
+        <pre><code class="language-java">
+// 新闻数据分析处理器
+public class NewsAnalyzer {
+    private List&lt;Article&gt; articles; // 文章列表
+
+    // 构造函数
+    public NewsAnalyzer(List&lt;Article&gt; articles) {
+        this.articles = articles;
+    }
+
+    /**
+     * 统计关键词出现频率
+     * @return 关键词-数量的映射表
+     */
+    public Map&lt;String, Integer&gt; countKeywords() {
+        return articles.stream()
+            .flatMap(a -> Arrays.stream(a.getKeywords()))
+            .collect(Collectors.groupingBy(
+                keyword -> keyword,
+                Collectors.summingInt(k -> 1)
+            ));
+    }
+}
+        </code></pre>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+</body>
+</html>

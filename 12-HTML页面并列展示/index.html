@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多巴胺的彩色世界</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 2rem;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96c93d);
+            min-height: 100vh;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h2 {
+            color: #2d3436;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #636e72;
+            line-height: 1.6;
+        }
+
+        .gradient-button {
+            background: linear-gradient(90deg, #ff7675, #fdcb6e);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .gradient-button:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        .card img {
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.02);
+        }
+
+        /* 新增图片样式 */
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">            <!-- 将图片路径改为相对路径 -->            <img src="picture/IMG_5079.jpg" alt="多彩世界" class="card-img">            <h2>欢迎来到多彩世界 🌈</h2>            <p>这是一个充满活力的网页设计示例，补充多巴胺，让世界更美好吧！</p>            <button class="gradient-button">立即探索</button>        </div>                <div class="card">            <!-- 使用子目录路径 -->            <img src="picture/IMG_5078.jpg" alt="探索多彩世界" class="card-img">            <h2>探索多彩世界🎨 </h2>            <p>开启快乐的夏日旅程</p>            <button class="gradient-button">点击看看吧</button>        </div>
+    </div>
+    
+
+    <script>
+        // 为所有渐变按钮添加点击交互
+        document.querySelectorAll('.gradient-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // 根据按钮文字执行不同操作
+                if(this.textContent.includes('探索')) {
+                    alert('🚀 开启多彩之旅！');
+                    // 这里可以替换为实际跳转逻辑
+                } else if(this.textContent.includes('看看')) {
+                    alert('🎨 设计特色被小猫吃掉了...');
+                    // 这里可以替换为实际内容加载逻辑
+                }
+                
+                // 添加点击动效
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
