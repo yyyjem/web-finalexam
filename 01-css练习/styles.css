@@ -1,0 +1,9 @@
+.box {
+    width: 200px;
+    height: 150px;
+    padding: 20px;
+    border: 5px solid #3498db;
+    margin: 30px;
+    background-color: #f1c40f;
+    box-sizing: border-box; /* 宽度和高度包含内边距和边框 */
+}
