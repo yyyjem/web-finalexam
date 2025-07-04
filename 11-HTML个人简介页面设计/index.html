@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自我介绍</title>
+    <style>
+        :root {
+            --primary: #5185ae;
+            --secondary: #4ecdc4;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #c687b7 0%, #6a8fb6 100%);
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        main {
+            display: grid;
+            grid-gap: 2rem;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        img.avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--secondary);
+            display: block;
+            margin: 0 auto;
+        }
+
+        ul.skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            padding: 0;
+        }
+
+        ul.skills li {
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 20px;
+            text-align: center;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        ul.skills li:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+        }
+
+        mark {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>👋 你好，我是<mark>Jem</mark></h1>
+        <img src="./IMG_4183.jpg" alt="头像" class="avatar">
+    </header>
+
+    <main>
+        <section aria-labelledby="about">
+            <h2 id="about">📖 关于我</h2>
+            <article>
+                <p>我是一名<strong>学生</strong>，擅长<em>sing</em>、<em>writing</em>、<em>read</em>和<em>dance</em>。</p>
+                <p>目前就读于<mark>西北民族大学</mark>，在学习<ins>新闻学专业</ins>的web前端设计。</p>
+            </article>
+        </section>
+
+        <section aria-labelledby="skills">
+            <h2 id="skills">💻 I can do</h2>
+            <ul class="skills">
+                <li>制作HTML5</li>
+                <li>英语四级</li>
+                <li>计算机二级</li>
+                <li>配音大赛</li>
+                <li>融媒体中心实习</li>
+                <li>手语协会优秀会员</li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="contact">
+            <h2 id="contact">📧 联系方式</h2>
+            <address>
+                📧 <a href="mailto:Jem123456@xx.com">Jem123456@xx.com</a><br>
+                📱 <a href="tel:+86 153xxxx5695">+86 153xxxx5695</a>
+            </address>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025  Jem  版权所有</p>
+        <nav>
+            <a href="#about">关于</a> |
+            <a href="#skills">能力</a> |
+            <a href="#contact">联系</a>
+        </nav>
+    </footer>
+</body>
+</html>
